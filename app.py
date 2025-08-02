@@ -9,7 +9,6 @@ app = Flask(__name__)
 # Configuration
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max file size
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
-app.config['SECRET_KEY'] = 'your-secret-key-change-this'
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
