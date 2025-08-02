@@ -1,0 +1,98 @@
+/* Custom styles for Emotion AI */
+
+.bg-grid-pattern {
+    background-image: 
+        linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Animation keyframes */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.5); }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom classes */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+}
+
+/* Drag and drop styles */
+.drag-over {
+    border-color: #6366f1 !important;
+    background-color: rgba(99, 102, 241, 0.05) !important;
+    transform: scale(1.02);
+}
+
+/* Emotion result cards */
+.emotion-card {
+    transition: all 0.3s ease;
+}
+
+.emotion-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bars */
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Toast styles */
+.toast {
+    animation: slide-up 0.3s ease-out;
+}
+
+.toast.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.toast.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.toast.info {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    #upload-area {
+        padding: 2rem 1rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+}

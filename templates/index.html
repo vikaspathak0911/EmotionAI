@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion AI - Face Emotion Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+    
+    <div class="relative z-10 container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto space-y-12">
+            
+            <!-- Header -->
+            <div class="text-center space-y-4">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <i data-lucide="brain" class="w-10 h-10 text-indigo-600"></i>
+                    <h1 class="text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                        Emotion AI
+                    </h1>
+                    <i data-lucide="sparkles" class="w-10 h-10 text-purple-600"></i>
+                </div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Upload a face image and discover the emotions within using advanced AI technology
+                </p>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white/20">
+                <div id="upload-area" class="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50/50">
+                    <input type="file" id="file-input" class="hidden" accept="image/*">
+                    
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="p-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+                            <i data-lucide="upload" class="w-12 h-12"></i>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h3 class="text-2xl font-semibold text-gray-800">Upload Face Image</h3>
+                            <p class="text-gray-600">
+                                Drag and drop an image or click to browse
+                            </p>
+                            <p class="text-sm text-gray-500">
+                                Supports JPG, PNG, WebP • Max 10MB
+                            </p>
+                        </div>
+                        
+                        <button id="browse-btn" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 font-medium flex items-center gap-2">
+                            <i data-lucide="image" class="w-5 h-5"></i>
+                            Choose Image
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div id="preview-section" class="hidden mt-8">
+                    <div class="relative">
+                        <img id="preview-image" class="w-full max-h-96 object-contain rounded-lg border border-gray-200" alt="Preview">
+                        <button id="clear-btn" class="absolute top-2 right-2 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200">
+                            <i data-lucide="x" class="w-5 h-5 text-gray-600"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex gap-4 justify-center mt-6">
+                        <button id="change-image-btn" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            Choose Different Image
+                        </button>
+                        <button id="analyze-btn" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 font-medium flex items-center gap-2 min-w-40">
+                            <i data-lucide="brain" class="w-5 h-5"></i>
+                            <span id="analyze-text">Analyze Emotions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" class="hidden">
+                <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white/20">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Emotion Analysis Results</h2>
+                        <p class="text-gray-600">AI-powered emotion detection analysis</p>
+                    </div>
+                    
+                    <div id="results-container" class="space-y-4">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+                <div class="bg-white rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm mx-4">
+                    <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Analyzing Emotions</h3>
+                        <p class="text-gray-600">Please wait while our AI processes your image...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notifications -->
+            <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2">
+                <!-- Toasts will be added here -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
