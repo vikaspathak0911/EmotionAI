@@ -143,7 +143,6 @@ For production deployment:
 
 1. **Set production configuration**:
    ```python
-   app.config['SECRET_KEY'] = 'your-secure-secret-key'
    app.run(debug=False, host='0.0.0.0', port=5000)
    ```
 
